@@ -1,6 +1,6 @@
 # Storingsmelder
 
-Student: Jonas van Bussel
+Student: Jonas van Busel
 
 Een klein meldingensysteem voor storingen. Je meldt een storing via een
 formulier, je ziet de openstaande meldingen in een lijst, en je sluit ze af als
