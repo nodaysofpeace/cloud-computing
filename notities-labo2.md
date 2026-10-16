@@ -55,3 +55,23 @@ De applicatie gebruikte SQLite en bewaarde de melding in /data/storingen.db, in 
 Bij een herstart bleef dezelfde container met dezelfde schrijflaag bestaan. Daarom bleef mijn melding bewaard.
 
 Toen ik de container verwijderde, verdween ook die schrijflaag. Een nieuwe container van hetzelfde image begon zonder mijn melding.
+
+## Cacheproef stap 7
+
+| Situatie | Bouwtijd |
+|---|---:|
+| Eerste build goede volgorde | 11,4 s |
+| Opnieuw bouwen | 1,0 s |
+| Alleen app.py gewijzigd | 1,2 s |
+| Dockerfile met slechte volgorde | 10,3 s |
+| Dockerfile met slechte volgorde & app.py wijziging | 10,6 s |
+
+## Vergelijking base images
+
+| Base image | Imagegrootte (DISK USAGE) | CONTENT SIZE | Eerste bouwtijd |
+|---|---:|---:|---:|
+| python:3.14 | 1,66 GB | 426 MB | 147,3 s |
+| python:3.14-slim | 221 MB | 54,1 MB | 11,4 s |
+| python:3.14-alpine | 121 MB | 30,2 MB | 22,4 s |
+
+Dit is ook de reden waarom ik alpine gebruikte uiteindelijk, omdat dit veel kleiner is dan de andere.
