@@ -1,4 +1,4 @@
-FROM python:3.14-slim 
+FROM python:3.14-alpine
 # Image waar python in staat.
 WORKDIR /app
 # Gebruik /app als werkmap
