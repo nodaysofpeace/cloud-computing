@@ -12,3 +12,6 @@ data/
 .vscode/
 .idea/
 .DS_Store
+
+# Lokale instellingen en geheimen
+.env
