@@ -1,0 +1,22 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+    depends_on:
+      - db
+    restart: on-failure
+
+  db:
+    image: postgres:18
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?Vul POSTGRES_USER in .env in}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Vul POSTGRES_PASSWORD in .env in}
+      POSTGRES_DB: ${POSTGRES_DB:?Vul POSTGRES_DB in .env in}
+    volumes:
+      - postgres-data:/var/lib/postgresql
+
+volumes:
+  postgres-data:
